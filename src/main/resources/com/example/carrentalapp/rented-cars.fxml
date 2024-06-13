@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.control.TabPane.TabClosingPolicy?>
-<?import javafx.scene.layout.*?>
-<?import java.net.URL?>
 
-<VBox alignment="CENTER" prefHeight="1920" prefWidth="1200" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" styleClass="main-container">
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER" styleClass="main-container" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <TabPane prefHeight="974.0" prefWidth="813.0" VBox.vgrow="ALWAYS" tabClosingPolicy="UNAVAILABLE">
+        <TabPane prefHeight="260.0" prefWidth="570.0" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
             <tabs>
                 <Tab text="Wynajęte samochody">
                     <content>
@@ -16,13 +16,13 @@
                                     <Label style="-fx-font-size: 24px;" text="Wynajęte samochody" />
                                     <TextField promptText="Search..." />
                                 </HBox>
-                                <TableView VBox.vgrow="ALWAYS" styleClass="rounded-table-view">
+                                <TableView style="-fx-background-radius: 10px; -fx-border-radius: 10px;" styleClass="rounded-table-view" VBox.vgrow="ALWAYS">
                                     <columns>
-                                        <TableColumn text="IDRent" />
-                                        <TableColumn text="IDClient" />
-                                        <TableColumn text="Rented_Date" />
-                                        <TableColumn text="Rented_From" />
-                                        <TableColumn text="Rented_Until" />
+                                        <TableColumn prefWidth="110.66665208339691" text="IDRent" />
+                                        <TableColumn prefWidth="109.33335876464844" text="IDClient" />
+                                        <TableColumn prefWidth="109.66659545898438" text="Rented_Date" />
+                                        <TableColumn minWidth="7.0" prefWidth="102.3333740234375" text="Rented_From" />
+                                        <TableColumn prefWidth="137.3333740234375" text="Rented_Until" />
                                     </columns>
                                 </TableView>
                             </children>
@@ -37,7 +37,7 @@
                                     <Label style="-fx-font-size: 24px;" text="Pozycje wynajmu" />
                                     <TextField promptText="Search..." />
                                 </HBox>
-                                <TableView VBox.vgrow="ALWAYS" styleClass="rounded-table-view">
+                                <TableView styleClass="rounded-table-view" VBox.vgrow="ALWAYS">
                                     <columns>
                                         <TableColumn text="IDPosition_of_rents" />
                                         <TableColumn text="IDClient" />
@@ -52,11 +52,15 @@
             </tabs>
         </TabPane>
 
-        <HBox alignment="CENTER" spacing="10">
-            <Button text="Dodaj nowy wynajem" />
+        <HBox alignment="TOP_RIGHT" spacing="10">
+            <Button text="Dodaj nowy wynajem" HBox.hgrow="ALWAYS" />
         </HBox>
+
     </children>
     <stylesheets>
         <URL value="@main-view.css" />
     </stylesheets>
+    <HBox.hgrow>
+        <Priority fx:constant="ALWAYS" />
+    </HBox.hgrow>
 </VBox>

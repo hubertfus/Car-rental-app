@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import java.net.URL?>
 
-<VBox alignment="TOP_CENTER" prefHeight="1920" prefWidth="1200" style="-fx-alignment: center; -fx-spacing: 15px;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" prefHeight="1920" prefWidth="1200" style="-fx-alignment: center; -fx-spacing: 15px;" styleClass="main-container" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label style="-fx-font-size: 24px;" text="Lista klientów" />
         <TextField promptText="Search..." />
-        <TableView VBox.vgrow="ALWAYS" style="-fx-background-radius: 10px; -fx-border-radius: 10px;" styleClass="rounded-table-view">
+        <TableView style="-fx-background-radius: 10px; -fx-border-radius: 10px;" styleClass="rounded-table-view" VBox.vgrow="ALWAYS">
             <columns>
                 <TableColumn text="IDClient" />
                 <TableColumn text="FirstName" />
@@ -18,11 +19,14 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
             </columnResizePolicy>
         </TableView>
-        <HBox alignment="CENTER_RIGHT" spacing="10">
+        <HBox alignment="TOP_RIGHT" spacing="10">
             <Button text="Dodaj nowego klienta" />
         </HBox>
     </children>
     <stylesheets>
         <URL value="@main-view.css" />
     </stylesheets>
+    <HBox.hgrow>
+        <Priority fx:constant="ALWAYS" />
+    </HBox.hgrow>
 </VBox>

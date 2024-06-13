@@ -44,7 +44,6 @@
         </HBox>
         <HBox alignment="CENTER" fx:id="content" prefHeight="365.0" VBox.vgrow="ALWAYS">
             <children>
-                <!-- Wstaw swoje komponenty tutaj -->
             </children>
             <HBox.hgrow>
                 <Priority fx:constant="ALWAYS"/>
