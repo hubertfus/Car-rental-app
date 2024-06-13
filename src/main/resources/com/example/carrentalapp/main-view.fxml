@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.carrentalapp.NavigationController">
+    <children>
+        <HBox alignment="CENTER" prefHeight="31.0" prefWidth="600.0" styleClass="header">
+            <children>
+                <Label contentDisplay="CENTER" text="Car Renting App" textFill="#5b5b5b">
+                    <font>
+                        <Font name="Segoe UI Black Italic" size="24.0"/>
+                    </font>
+                </Label>
+                <HBox maxWidth="Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="200.0" fx:id="navigationBar">
+                    <children>
+                        <Label styleClass="navItem" text="Rented Cars" userData="rentedCarsScene">
+                            <font>
+                                <Font name="Segoe UI Bold" size="24.0"/>
+                            </font>
+                        </Label>
+                        <Label styleClass="navItem" text="Available Cars" userData="availableCarsScene">
+                            <font>
+                                <Font name="Segoe UI Bold" size="24.0"/>
+                            </font>
+                        </Label>
+                        <Label styleClass="navItem" text="Clients" userData="clientsScene">
+                            <font>
+                                <Font name="Segoe UI Bold" size="24.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                    <HBox.hgrow>
+                        <Priority fx:constant="ALWAYS"/>
+                    </HBox.hgrow>
+                </HBox>
+            </children>
+            <VBox.margin>
+                <Insets bottom="10.0"/>
+            </VBox.margin>
+        </HBox>
+        <HBox fx:id="content" prefHeight="365.0" VBox.vgrow="ALWAYS">
+            <children>
+
+            </children>
+            <HBox.hgrow>
+                <Priority fx:constant="ALWAYS"/>
+            </HBox.hgrow>
+        </HBox>
+    </children>
+</VBox>
