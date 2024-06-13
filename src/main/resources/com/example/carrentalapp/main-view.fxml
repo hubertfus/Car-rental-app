@@ -15,7 +15,7 @@
                         <Font name="Segoe UI Black Italic" size="24.0"/>
                     </font>
                 </Label>
-                <HBox alignment="CENTER" maxWidth="Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="200.0" fx:id="navigationBar">
+                <HBox maxWidth="Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="100.0" prefWidth="200.0" fx:id="navigationBar">
                     <children>
                         <Label styleClass="navItem" text="Rented Cars" userData="rentedCarsScene">
                             <font>
