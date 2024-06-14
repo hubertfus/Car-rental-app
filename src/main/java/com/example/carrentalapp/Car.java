@@ -3,12 +3,13 @@ package com.example.carrentalapp;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "cars", schema = "car_rental")
 public class Car {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idcar", nullable = false)
     private Integer id;
 
@@ -20,11 +21,10 @@ public class Car {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idengine")
-    private Engine idengine;
+    private Engine engine;
 
     @Column(name = "price", precision = 9, scale = 2)
     private BigDecimal price;
-
     public Integer getId() {
         return id;
     }
@@ -49,12 +49,12 @@ public class Car {
         this.model = model;
     }
 
-    public Engine getIdengine() {
-        return idengine;
+    public Engine getEngine() {
+        return engine;
     }
 
-    public void setIdengine(Engine idengine) {
-        this.idengine = idengine;
+    public void setEngine(Engine engine) {
+        this.engine = engine;
     }
 
     public BigDecimal getPrice() {

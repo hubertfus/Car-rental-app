@@ -1,7 +1,9 @@
 package com.example.carrentalapp;
 
-
 import jakarta.persistence.*;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "engine", schema = "car_rental")
@@ -19,6 +21,9 @@ public class Engine {
 
     @Column(name = "fueltype", length = 50)
     private String fueltype;
+
+    @OneToMany(mappedBy = "engine")
+    private Set<Car> cars = new LinkedHashSet<>();
 
     public Integer getId() {
         return id;
@@ -50,6 +55,14 @@ public class Engine {
 
     public void setFueltype(String fueltype) {
         this.fueltype = fueltype;
+    }
+
+    public Set<Car> getCars() {
+        return cars;
+    }
+
+    public void setCars(Set<Car> cars) {
+        this.cars = cars;
     }
 
 }

@@ -14,11 +14,11 @@ public class RentedCar {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idclient")
-    private Client idclient;
+    private Client client;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idcar")
-    private Car idcar;
+    private Car car;
 
     @Column(name = "rented_date")
     private Instant rentedDate;
@@ -38,11 +38,11 @@ public class RentedCar {
     }
 
     public Client getIdclient() {
-        return idclient;
+        return client;
     }
 
     public void setIdclient(Client idclient) {
-        this.idclient = idclient;
+        this.client = idclient;
     }
 
     public Instant getRentedDate() {
@@ -67,6 +67,14 @@ public class RentedCar {
 
     public void setRentedUntil(Instant rentedUntil) {
         this.rentedUntil = rentedUntil;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 
 }

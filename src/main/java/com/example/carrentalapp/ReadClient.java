@@ -10,9 +10,9 @@ public class ReadClient {
         Session session = HibernateUtil.getSessionFactory().openSession();
 
         try {
-            Client client = session.get(Client.class, userId);
+            Car client = session.get(Car.class, userId);
             if (client != null) {
-                System.out.println("User details: " + client.getFirstname() + ", " + client.getEmail());
+                System.out.println("User details: " + client.getBrand() + ", " + client.getModel());
             } else {
                 System.out.println("User not found!");
             }
