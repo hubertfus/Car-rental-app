@@ -5,11 +5,17 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.io.IOException;
 import java.util.List;
 
 public class AvailableCarsController {
@@ -41,7 +47,7 @@ public class AvailableCarsController {
     @FXML
     private TableColumn<Car, Double> priceColumn;
 
-    private ObservableList<Car> cars = FXCollections.observableArrayList();
+    private static ObservableList<Car> cars = FXCollections.observableArrayList();
 
     @FXML
     private void initialize() {
@@ -50,7 +56,7 @@ public class AvailableCarsController {
     }
 
     private void initializeTable() {
-        idCarColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        idCarColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getId()));
         brandColumn.setCellValueFactory(new PropertyValueFactory<>("brand"));
         modelColumn.setCellValueFactory(new PropertyValueFactory<>("model"));
 
@@ -80,9 +86,21 @@ public class AvailableCarsController {
         }
     }
 
-    // Optional: Method for handling new car addition button click
+    static void addCar(Car car) {
+        cars.add(car);
+    }
     @FXML
-    private void handleAddNewCar() {
-        // Logic for adding a new car
+    private void handleAddNewCar() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("AddNewCarModal.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        AddNewCarModalController controller = fxmlLoader.getController();
+        Stage stage = new Stage();
+        controller.setStage(stage);
+        stage.setScene(scene);
+        stage.setTitle("Nowy samochód");
+        stage.initStyle(StageStyle.DECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+        stage.show();
     }
 }
