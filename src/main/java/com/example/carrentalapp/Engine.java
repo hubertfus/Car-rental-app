@@ -25,6 +25,22 @@ public class Engine {
     @OneToMany(mappedBy = "engine")
     private Set<Car> cars = new LinkedHashSet<>();
 
+    public Engine( String name, Integer power, String fueltype) {
+        this.name = name;
+        this.power = power;
+        this.fueltype = fueltype;
+    }
+
+    public Engine() {
+    }
+
+    public Engine(Integer id, String name, Integer power, String fueltype) {
+        this.id = id;
+        this.name = name;
+        this.power = power;
+        this.fueltype = fueltype;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -65,4 +81,12 @@ public class Engine {
         this.cars = cars;
     }
 
+    @Override
+    public String toString() {
+        return id +
+                ", name='" + name + '\'' +
+                ", power=" + power +
+                ", fueltype='" + fueltype + '\'' +
+                ", cars=" + cars;
+    }
 }

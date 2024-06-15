@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.carrentalapp.AddNewCarModalController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="42.0" prefWidth="400.0" VBox.vgrow="NEVER">
+         <children>
+            <Label alignment="CENTER" text="Dodawnie Nowego Samochodu">
+               <font>
+                  <Font name="System Bold" size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <GridPane VBox.vgrow="ALWAYS">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="185.20001220703125" minWidth="10.0" prefWidth="139.60003662109375" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.39996337890625" minWidth="10.0" prefWidth="240.39996337890625" />
+        </columnConstraints>
+        <rowConstraints>
+           <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="52.400000000000006" minHeight="0.0" prefHeight="27.799999999999983" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="31.80000000000001" minHeight="4.400000000000006" prefHeight="29.80000000000001" />
+        </rowConstraints>
+         <children>
+            <Label text="Marka:" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+            <TextField fx:id="brandTextField" GridPane.columnIndex="1" />
+            <Label text="Model:" GridPane.rowIndex="1" />
+            <TextField fx:id="modelTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+             <Label text="Cena:" GridPane.rowIndex="2" />
+             <TextField fx:id="priceTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+             <Label text="Silnik:" GridPane.rowIndex="3" />
+            <ChoiceBox fx:id="engineChoiceBox" prefHeight="26.0" prefWidth="252.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Button fx:id="newEngineButton" mnemonicParsing="false" onAction="#handleNewEngineButtonAction" prefHeight="26.0" prefWidth="256.0" text="Nowy Silnik" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="26.0" prefWidth="425.0" text="Dodaj" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+         </children>
+      </GridPane>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>
