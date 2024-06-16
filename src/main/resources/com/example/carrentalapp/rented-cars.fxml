@@ -5,28 +5,20 @@
 <?import javafx.scene.layout.*?>
 
 <VBox fx:controller="com.example.carrentalapp.RentedCarsController" alignment="CENTER" prefHeight="1920" prefWidth="1200" styleClass="main-container" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <VBox alignment="CENTER" spacing="10" minHeight="-Infinity" minWidth="-Infinity" maxWidth="Infinity" maxHeight="Infinity">
-            <children>
-                <VBox alignment="CENTER" spacing="10">
-                    <Label style="-fx-font-size: 24px;" text="Wynajęte samochody" />
-                    <TextField fx:id="searchTextField" promptText="Search..." />
-                </VBox>
-                <TableView fx:id="rentedCarsTable" style="-fx-background-radius: 10px; -fx-border-radius: 10px;" styleClass="rounded-table-view" VBox.vgrow="ALWAYS">
-                    <columns>
-                        <TableColumn fx:id="idRentColumn" text="ID Rent" />
-                        <TableColumn fx:id="idClientColumn" text="ID Client" />
-                        <TableColumn fx:id="idCarColumn" text="ID Car" />
-                        <TableColumn fx:id="rentedDateColumn" text="Rented Date" />
-                        <TableColumn fx:id="rentedFromColumn" text="Rented From" />
-                        <TableColumn fx:id="rentedUntilColumn" text="Rented Until" />
-                    </columns>
-                </TableView>
-            </children>
-            <VBox.vgrow>
-                <Priority fx:constant="ALWAYS" />
-            </VBox.vgrow>
-        </VBox>
+<children>
+    <Label style="-fx-font-size: 24px;" text="Wynajęte samochody" />
+    <TextField fx:id="searchTextField" promptText="Search..." />
+
+    <TableView fx:id="rentedCarsTable" style="-fx-background-radius: 10px; -fx-border-radius: 10px;" styleClass="rounded-table-view" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="idRentColumn" text="ID Rent" />
+            <TableColumn fx:id="idClientColumn" text="ID Client" />
+            <TableColumn fx:id="idCarColumn" text="ID Car" />
+            <TableColumn fx:id="rentedDateColumn" text="Rented Date" />
+            <TableColumn fx:id="rentedFromColumn" text="Rented From" />
+            <TableColumn fx:id="rentedUntilColumn" text="Rented Until" />
+        </columns>
+    </TableView>
         <HBox alignment="TOP_RIGHT" spacing="10">
             <Button text="Dodaj nowy wynajem" HBox.hgrow="ALWAYS" />
         </HBox>
