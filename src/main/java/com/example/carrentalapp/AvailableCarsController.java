@@ -53,6 +53,7 @@ public class AvailableCarsController {
     private void initialize() {
         initializeTable();
         loadAvailableCars();
+        setupRowClickListener();
     }
 
     private void initializeTable() {
@@ -78,17 +79,63 @@ public class AvailableCarsController {
     private void loadAvailableCars() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             String hql = "SELECT c FROM Car c INNER JOIN FETCH c.engine WHERE NOT EXISTS (" +
-                    "  SELECT 1 FROM RentedCar rc WHERE rc.car = c" +
-                    ")";
+                    "  SELECT 1 FROM RentedCar rc WHERE rc.car = c " +
+                    ")ORDER BY c.id ASC";
             Query<Car> query = session.createQuery(hql, Car.class);
             List<Car> resultList = query.getResultList();
             cars.addAll(resultList);
         }
     }
 
+    private void setupRowClickListener() {
+        availableCarsTable.setRowFactory(tv -> {
+            TableRow<Car> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (!row.isEmpty())) {
+                    Car rowData = row.getItem();
+                    openCarDetails(rowData);
+                }
+            });
+            return row;
+        });
+    }
+
+    private void openCarDetails(Car car) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("CarDetailsView.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            CarDetailsController controller = fxmlLoader.getController();
+            Stage stage = new Stage();
+            controller.setCar(car);
+            controller.setStage(stage);
+            stage.setScene(scene);
+            stage.setTitle("Szczegóły samochódu");
+            stage.initStyle(StageStyle.DECORATED);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     static void addCar(Car car) {
         cars.add(car);
     }
+
+    static void updateCar(Car car) {
+        for (int i = 0; i < cars.size(); i++) {
+            if (cars.get(i).getId() == car.getId()) {
+                cars.set(i, car);
+                break;
+            }
+        }
+    }
+
+    static void deleteCar(int carId) {
+        cars.removeIf(car -> car.getId() == carId);
+    }
+
     @FXML
     private void handleAddNewCar() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("AddNewCarModal.fxml"));
