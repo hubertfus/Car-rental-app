@@ -25,9 +25,8 @@
                 <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="52.400000000000006" minHeight="0.0" prefHeight="27.799999999999983" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="31.80000000000001" minHeight="4.400000000000006" prefHeight="29.80000000000001" />
+
             </rowConstraints>
             <children>
                 <Label text="Nazwa:" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
@@ -36,7 +35,7 @@
                 <TextField fx:id="powerTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                 <Label text="Typ paliwa:" GridPane.rowIndex="2" />
                 <TextField fx:id="fueltypeTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="26.0" prefWidth="425.0" text="Dodaj" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="26.0" prefWidth="425.0" text="Dodaj" GridPane.columnSpan="2" GridPane.rowIndex="4" />
             </children>
         </GridPane>
     </children>
