@@ -2,6 +2,7 @@ package com.example.carrentalapp;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -162,4 +163,6 @@ public class AddNewCarModalController {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
+
+
 }
