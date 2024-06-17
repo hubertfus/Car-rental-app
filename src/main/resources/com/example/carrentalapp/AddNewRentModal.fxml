@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.carrentalapp.AddNewEngineModalController">
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.carrentalapp.AddNewRentModalController">
     <children>
         <HBox alignment="CENTER" prefHeight="42.0" prefWidth="400.0" VBox.vgrow="NEVER">
             <children>
-                <Label alignment="CENTER" text="Dodawanie Nowego Silniku">
+                <Label alignment="CENTER" text="Dodawanie Nowego Wynajmu">
                     <font>
                         <Font name="System Bold" size="22.0" />
                     </font>
@@ -26,15 +26,16 @@
                 <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="52.400000000000006" minHeight="0.0" prefHeight="27.799999999999983" vgrow="SOMETIMES" />
+            <RowConstraints />
 
             </rowConstraints>
             <children>
-                <Label text="Nazwa:" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
-                <TextField fx:id="nameTextField" GridPane.columnIndex="1" />
-                <Label text="Moc:" GridPane.rowIndex="1" />
-                <TextField fx:id="powerTextField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                <Label text="Typ paliwa:" GridPane.rowIndex="2" />
-                <TextField fx:id="fueltypeTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                <Label text="Data wynajmu:" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+                <Label text="Początek wynajmu:" GridPane.rowIndex="1" />
+                <Label text="Zakończenie wynajmu:" GridPane.rowIndex="2" />
+            <DatePicker prefHeight="25.0" prefWidth="247.0" GridPane.columnIndex="1" />
+            <DatePicker prefHeight="25.0" prefWidth="252.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <DatePicker prefHeight="25.0" prefWidth="245.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                 <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="26.0" prefWidth="425.0" text="Dodaj" GridPane.columnSpan="2" GridPane.rowIndex="4" />
             </children>
         </GridPane>

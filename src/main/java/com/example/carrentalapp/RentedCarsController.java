@@ -5,14 +5,20 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.time.ZoneId;
 import java.util.List;
@@ -71,5 +77,19 @@ public class RentedCarsController {
             }
             rentedCarsList.addAll(resultList);
         }
+    }
+    @FXML
+    private void handleAddNewRent() throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("AddNewRentModal.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        AddNewRentModalController controller = fxmlLoader.getController();
+        Stage stage = new Stage();
+        controller.setStage(stage);
+        stage.setScene(scene);
+        stage.setTitle("Nowy wynajem");
+        stage.initStyle(StageStyle.DECORATED);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setResizable(false);
+        stage.show();
     }
 }

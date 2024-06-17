@@ -9,7 +9,7 @@
    <children>
       <HBox alignment="CENTER" prefHeight="42.0" prefWidth="400.0" VBox.vgrow="NEVER">
          <children>
-            <Label alignment="CENTER" text="Dodawnie Nowego Samochodu">
+            <Label alignment="CENTER" text="Dodawanie Nowego Samochodu">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
