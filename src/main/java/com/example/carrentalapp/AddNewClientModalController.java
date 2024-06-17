@@ -7,8 +7,12 @@ import javafx.stage.Stage;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+/**
+ * Controller class for the 'Add New Client' modal.
+ */
 public class AddNewClientModalController {
 
+    // FXML annotations to inject components from FXML
     @FXML
     private TextField firstNameTextField;
 
@@ -18,33 +22,60 @@ public class AddNewClientModalController {
     @FXML
     private TextField emailTextField;
 
+    // Stage reference to control the modal window
     private Stage stage;
 
-
+    /**
+     * Sets the stage of this modal.
+     *
+     * @param stage The stage window.
+     */
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
-    @FXML
-    private void initialize() {
-    }
 
+    /**
+     * Handles the submit button action.
+     * Validates input fields and adds a new client to the database.
+     */
     @FXML
     private void handleSubmitButtonAction() {
         String firstname = getFirstname();
         String lastname = getLastname();
         String email = getEmail();
 
+        // Validate input fields are not empty
         if (firstname.isEmpty() || lastname.isEmpty() || email.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Błąd walidacji", "Wszystkie pola muszą być wypełnione.");
+            showAlert(Alert.AlertType.ERROR, "Validation Error", "All fields must be filled.");
             return;
         }
-        showAlert(Alert.AlertType.INFORMATION, "Sukces", "Silnik został pomyślnie dodany.");
 
+        // Show success message
+        showAlert(Alert.AlertType.INFORMATION, "Success", "Client has been successfully added.");
+
+        // Create new client object and persist it to the database
+        Client client = new Client(firstname, lastname, email);
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.persist(client);
+            session.flush();
+            transaction.commit();
+            ClientsController.addClient(client);
+        }
+
+        // Close the modal window
         stage.close();
     }
 
-    private void showAlert(Alert.AlertType alertType,String title, String message) {
+    /**
+     * Shows an alert dialog to the user.
+     *
+     * @param alertType The type of alert.
+     * @param title The title of the alert dialog.
+     * @param message The message to display in the alert dialog.
+     */
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
@@ -52,12 +83,29 @@ public class AddNewClientModalController {
         alert.showAndWait();
     }
 
+    /**
+     * Retrieves the first name from the first name text field.
+     *
+     * @return The entered first name.
+     */
     public String getFirstname() {
         return firstNameTextField.getText();
     }
 
-    public String getLastname() {return lastNameTextField.getText();}
+    /**
+     * Retrieves the last name from the last name text field.
+     *
+     * @return The entered last name.
+     */
+    public String getLastname() {
+        return lastNameTextField.getText();
+    }
 
+    /**
+     * Retrieves the email from the email text field.
+     *
+     * @return The entered email address.
+     */
     public String getEmail() {
         return emailTextField.getText();
     }

@@ -19,6 +19,16 @@ public class Client {
     @Column(name = "email", length = 100)
     private String email;
 
+    public Client() {
+
+    }
+
+    public Client(String firstname, String lastname, String email) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.email = email;
+    }
+
     public Integer getId() {
         return id;
     }
