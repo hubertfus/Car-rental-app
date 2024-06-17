@@ -49,7 +49,7 @@ public class AddNewEngineModalController {
 
         // Validate that all fields are filled.
         if (name.isEmpty() || power.isEmpty() || fueltype.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "All fields must be filled.");
+            showAlert(Alert.AlertType.ERROR, "Błąd walidacji", "Wszystkie pola muszą być wypełnione.");
             return;
         }
 
@@ -58,11 +58,11 @@ public class AddNewEngineModalController {
             // Parse the power input as an integer.
             powerNumber = Integer.parseInt(power);
         } catch (NumberFormatException e) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "Engine power must be a number.");
+            showAlert(Alert.AlertType.ERROR, "Błąd walidacji", "Moc silnika musi być liczbą.");
             return;
         }
 
-        // Create a new Engine object and save it to the database.
+// Create a new Engine object and save it to the database.
         Engine engine = new Engine(name, powerNumber, fueltype);
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
@@ -72,8 +72,8 @@ public class AddNewEngineModalController {
             AddNewCarModalController.addEngine(engine);
         }
 
-        // Show success message and close the dialog.
-        showAlert(Alert.AlertType.INFORMATION, "Success", "Engine has been successfully added.");
+// Show success message and close the dialog.
+        showAlert(Alert.AlertType.INFORMATION, "Sukces", "Silnik został pomyślnie dodany.");
 
         stage.close();
     }

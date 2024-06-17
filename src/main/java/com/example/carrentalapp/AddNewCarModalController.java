@@ -113,7 +113,7 @@ public class AddNewCarModalController {
 
         // Validate input fields are not empty and engine is selected
         if (brand.isEmpty() || model.isEmpty() || price.isEmpty() || engineStr == null) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "All fields must be filled.");
+            showAlert(Alert.AlertType.ERROR, "Błąd walidacji", "Wszystkie pola muszą być wypełnione.");
             return;
         }
 
@@ -122,14 +122,14 @@ public class AddNewCarModalController {
         try {
             priceValue = new BigDecimal(price);
         } catch (NumberFormatException e) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "Price must be a number.");
+            showAlert(Alert.AlertType.ERROR, "Błąd walidacji", "Cena musi być liczbą.");
             return;
         }
 
         // Find selected engine by string, show error if not found
         Engine selectedEngine = getEngineByString(engineStr);
         if (selectedEngine == null) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "Selected engine does not exist.");
+            showAlert(Alert.AlertType.ERROR, "Błąd walidacji", "Wybrany silnik nie istnieje.");
             return;
         }
 

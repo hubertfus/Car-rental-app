@@ -64,8 +64,8 @@ public class AddNewRentModalController {
         String rentedFromDate = getRentedFrom();
         String rentedUntilDate = getRentedUntil();
 
-        if (rentedDate.isEmpty()  || rentedFromDate.isEmpty() || rentedUntilDate.isEmpty() || clientChoiceBox.getValue() == null || carChoiceBox.getValue() == null) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "All fields must be filled.");
+        if (rentedDate.isEmpty() || rentedFromDate.isEmpty() || rentedUntilDate.isEmpty() || clientChoiceBox.getValue() == null || carChoiceBox.getValue() == null) {
+            showAlert(Alert.AlertType.ERROR, "Błąd walidacji", "Wszystkie pola muszą być wypełnione.");
             return;
         }
 
@@ -73,7 +73,7 @@ public class AddNewRentModalController {
                 .getCarByCarID(Integer.parseInt(carChoiceBox.getValue().toString().split(" ")[0]));
         Client client = ClientsController
                 .getClientByClientID(Integer.parseInt(clientChoiceBox.getValue().toString().split(" ")[0]));
-        RentedCar rentedCar = new RentedCar(client,car,rentedDate,rentedFromDate,rentedUntilDate);
+        RentedCar rentedCar = new RentedCar(client, car, rentedDate, rentedFromDate, rentedUntilDate);
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
@@ -81,7 +81,7 @@ public class AddNewRentModalController {
             session.flush();
             transaction.commit();
             RentedCarsController.addRentedCar(rentedCar);
-            showAlert(Alert.AlertType.INFORMATION, "Success", "Car successfully rented.");
+            showAlert(Alert.AlertType.INFORMATION, "Sukces", "Samochód został pomyślnie wynajęty.");
         }
 
         stage.close();

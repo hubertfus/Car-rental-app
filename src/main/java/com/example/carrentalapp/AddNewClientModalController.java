@@ -47,12 +47,12 @@ public class AddNewClientModalController {
 
         // Validate input fields are not empty
         if (firstname.isEmpty() || lastname.isEmpty() || email.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "All fields must be filled.");
+            showAlert(Alert.AlertType.ERROR, "Błąd walidacji", "Wszystkie pola muszą być wypełnione.");
             return;
         }
 
         // Show success message
-        showAlert(Alert.AlertType.INFORMATION, "Success", "Client has been successfully added.");
+        showAlert(Alert.AlertType.INFORMATION, "Sukces", "Klient został pomyślnie dodany.");
 
         // Create new client object and persist it to the database
         Client client = new Client(firstname, lastname, email);

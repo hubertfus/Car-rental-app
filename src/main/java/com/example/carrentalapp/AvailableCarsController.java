@@ -131,7 +131,7 @@ public class AvailableCarsController {
             controller.setCar(car);
             controller.setStage(stage);
             stage.setScene(scene);
-            stage.setTitle("Car Details");
+            stage.setTitle("Szczegóły samochodu");
             stage.initStyle(StageStyle.DECORATED);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setResizable(false);
@@ -202,7 +202,7 @@ public class AvailableCarsController {
         Stage stage = new Stage();
         controller.setStage(stage);
         stage.setScene(scene);
-        stage.setTitle("New Car");
+        stage.setTitle("Nowy samochód");
         stage.initStyle(StageStyle.DECORATED);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setResizable(false);
