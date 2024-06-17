@@ -136,6 +136,15 @@ public class AvailableCarsController {
         cars.removeIf(car -> car.getId() == carId);
     }
 
+    static Car getCarByCarID(int carId){
+        for (Car car : cars) {
+            if (car.getId() == carId) {
+                return car;
+            }
+        }
+        return null;
+    }
+
     @FXML
     private void handleAddNewCar() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("AddNewCarModal.fxml"));
@@ -149,5 +158,8 @@ public class AvailableCarsController {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setResizable(false);
         stage.show();
+    }
+    static ObservableList getCars(){
+        return cars;
     }
 }

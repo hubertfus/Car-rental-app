@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.carrentalapp.AddNewRentModalController">
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.carrentalapp.RentedCarDetailsModalController">
     <children>
         <HBox alignment="CENTER" prefHeight="42.0" prefWidth="400.0" VBox.vgrow="NEVER">
             <children>
-                <Label alignment="CENTER" text="Dodawanie Nowego Wynajmu">
+                <Label alignment="CENTER" text="szczegóły Wynajmu">
                     <font>
                         <Font name="System Bold" size="22.0" />
                     </font>
@@ -26,8 +26,9 @@
                 <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="30.0" minHeight="0.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="52.400000000000006" minHeight="0.0" prefHeight="27.799999999999983" vgrow="SOMETIMES" />
-            <RowConstraints />
+                <RowConstraints />
 
             </rowConstraints>
             <children>
@@ -41,7 +42,9 @@
                 <ChoiceBox fx:id="carChoiceBox" prefHeight="26.0" prefWidth="295.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                 <Label text="Klient:" GridPane.rowIndex="3" />
                 <Label text="Samochód" GridPane.rowIndex="4" />
-                <Button fx:id="submitButton" mnemonicParsing="false" onAction="#handleSubmitButtonAction" prefHeight="26.0" prefWidth="425.0" text="Dodaj" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                <Button mnemonicParsing="false" onAction="#handleSaveButtonAction" prefHeight="26.0" prefWidth="425.0" text="Zapisz" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                <Button mnemonicParsing="false" onAction="#handleDeleteButtonAction" prefHeight="26.0" prefWidth="425.0" text="usuń" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                <Button mnemonicParsing="false" onAction="#handleCancelButtonAction" prefHeight="26.0" prefWidth="425.0" text="Anuluj" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             </children>
         </GridPane>
     </children>

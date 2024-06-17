@@ -2,7 +2,7 @@ package com.example.carrentalapp;
 
 import jakarta.persistence.*;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "rented_car", schema = "car_rental")
@@ -21,13 +21,23 @@ public class RentedCar {
     private Car car;
 
     @Column(name = "rented_date")
-    private Instant rentedDate;
+    private String rentedDate;
 
     @Column(name = "rented_from")
-    private Instant rentedFrom;
+    private String rentedFrom;
 
     @Column(name = "rented_until")
-    private Instant rentedUntil;
+    private String rentedUntil;
+
+    public RentedCar(){}
+
+    public RentedCar(Client client, Car car, String rentedDate, String rentedFrom, String rentedUntil) {
+        this.client = client;
+        this.car = car;
+        this.rentedDate = rentedDate;
+        this.rentedFrom = rentedFrom;
+        this.rentedUntil = rentedUntil;
+    }
 
     public Integer getId() {
         return id;
@@ -37,35 +47,35 @@ public class RentedCar {
         this.id = id;
     }
 
-    public Client getIdclient() {
+    public Client getClient() {
         return client;
     }
 
-    public void setIdclient(Client idclient) {
+    public void setClient(Client idclient) {
         this.client = idclient;
     }
 
-    public Instant getRentedDate() {
+    public String getRentedDate() {
         return rentedDate;
     }
 
-    public void setRentedDate(Instant rentedDate) {
+    public void setRentedDate(String rentedDate) {
         this.rentedDate = rentedDate;
     }
 
-    public Instant getRentedFrom() {
+    public String getRentedFrom() {
         return rentedFrom;
     }
 
-    public void setRentedFrom(Instant rentedFrom) {
+    public void setRentedFrom(String rentedFrom) {
         this.rentedFrom = rentedFrom;
     }
 
-    public Instant getRentedUntil() {
+    public String getRentedUntil() {
         return rentedUntil;
     }
 
-    public void setRentedUntil(Instant rentedUntil) {
+    public void setRentedUntil(String rentedUntil) {
         this.rentedUntil = rentedUntil;
     }
 
@@ -76,5 +86,6 @@ public class RentedCar {
     public void setCar(Car car) {
         this.car = car;
     }
+
 
 }
