@@ -1,3 +1,9 @@
+/**
+ * Controller class for managing rented cars view and operations.
+ * This controller initializes the table with rented cars, handles addition,
+ * deletion, and updating of rented car entries. It also supports
+ * double-click functionality to view details of a selected rented car.
+ */
 package com.example.carrentalapp;
 
 import javafx.beans.property.SimpleObjectProperty;
@@ -49,8 +55,13 @@ public class RentedCarsController {
     @FXML
     private TableColumn<RentedCar, String> rentedUntilColumn;
 
+    // Observable list to hold rented cars data
     private static ObservableList<RentedCar> rentedCarsList = FXCollections.observableArrayList();
 
+    /**
+     * Initializes the controller class. Sets up table columns and loads
+     * rented car data from the database.
+     */
     @FXML
     private void initialize() {
         rentedCarsTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -67,6 +78,9 @@ public class RentedCarsController {
         setupRowClickListener();
     }
 
+    /**
+     * Loads rented car data from the database using Hibernate.
+     */
     private void loadRentedCars() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             String hql = "SELECT c FROM RentedCar c";
@@ -76,6 +90,12 @@ public class RentedCarsController {
         }
     }
 
+    /**
+     * Handles adding a new rent entry. Opens a modal window for adding
+     * a new rented car record.
+     *
+     * @throws IOException If there is an error loading the FXML file.
+     */
     @FXML
     private void handleAddNewRent() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("AddNewRentModal.fxml"));
@@ -91,6 +111,10 @@ public class RentedCarsController {
         stage.show();
     }
 
+    /**
+     * Sets up a double-click listener on rows of the rented cars table.
+     * Opens details of the selected rented car in a modal window.
+     */
     private void setupRowClickListener() {
         rentedCarsTable.setRowFactory(tv -> {
             TableRow<RentedCar> row = new TableRow<>();
@@ -108,6 +132,12 @@ public class RentedCarsController {
         });
     }
 
+    /**
+     * Opens a modal window to display details of a rented car.
+     *
+     * @param rentedCar The rented car object whose details are to be displayed.
+     * @throws IOException If there is an error loading the FXML file.
+     */
     private void openRentedCarDetails(RentedCar rentedCar) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("RentedCarDetailsModal.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -123,10 +153,20 @@ public class RentedCarsController {
         stage.show();
     }
 
+    /**
+     * Adds a rented car to the observable list.
+     *
+     * @param car The rented car to be added.
+     */
     static void addRentedCar(RentedCar car){
         rentedCarsList.add(car);
     }
 
+    /**
+     * Updates a rented car in the observable list.
+     *
+     * @param rentedCar The rented car to be updated.
+     */
     static void updateRentedCar(RentedCar rentedCar) {
         for (int i = 0; i < rentedCarsList.size(); i++) {
             if (rentedCarsList.get(i).getId() == rentedCar.getId()) {
@@ -136,6 +176,11 @@ public class RentedCarsController {
         }
     }
 
+    /**
+     * Deletes a rented car from the observable list.
+     *
+     * @param RentedId The ID of the rented car to be deleted.
+     */
     static void deleteRentedCar(int RentedId) {
         rentedCarsList.removeIf(car -> car.getId() == RentedId);
     }
