@@ -90,7 +90,7 @@ public class AvailableCarsController {
     /**
      * Loads available cars from the database and populates the table.
      */
-    private void loadAvailableCars() {
+    public static void loadAvailableCars() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             String hql = "SELECT c FROM Car c INNER JOIN FETCH c.engine WHERE NOT EXISTS (" +
                     "  SELECT 1 FROM RentedCar rc WHERE rc.car = c " +

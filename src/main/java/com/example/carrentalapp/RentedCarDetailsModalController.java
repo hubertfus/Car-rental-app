@@ -106,7 +106,6 @@ public class RentedCarDetailsModalController {
         String selectedClientId = clientChoiceBox.getValue().split(" ")[0]; // Assuming it's formatted as "id firstname lastname"
         Client client = ClientsController.getClientByClientID(Integer.parseInt(selectedClientId));
 
-        showAlert(Alert.AlertType.INFORMATION, "Sukces", "Samochód został pomyślnie wynajęty.");
         rentedCar.setRentedDate(rentedDate);
         rentedCar.setRentedFrom(rentedFromDate);
         rentedCar.setRentedUntil(rentedUntilDate);
@@ -119,11 +118,12 @@ public class RentedCarDetailsModalController {
             session.flush();
             transaction.commit();
             RentedCarsController.updateRentedCar(rentedCar);
+            AvailableCarsController.loadAvailableCars();
+            showAlert(Alert.AlertType.INFORMATION, "Sukces", "Samochód został pomyślnie wynajęty.");
+            stage.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        stage.close();
     }
 
     /**
@@ -137,11 +137,11 @@ public class RentedCarDetailsModalController {
             session.flush();
             transaction.commit();
             RentedCarsController.deleteRentedCar(rentedCar.getId());
+            AvailableCarsController.loadAvailableCars();
+            showAlert(Alert.AlertType.INFORMATION, "Sukces", "Szczegóły zostały pomyślnie usunięte.");
+
+            stage.close();
         }
-
-        showAlert(Alert.AlertType.INFORMATION, "Sukces", "Szczegóły zostały pomyślnie usunięte.");
-
-        stage.close();
     }
 
     /**
