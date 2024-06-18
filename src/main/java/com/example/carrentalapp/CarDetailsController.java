@@ -89,7 +89,7 @@ public class CarDetailsController {
         String price = getPrice();
 
         if (brand.isEmpty() || model.isEmpty() || price.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "All fields must be filled.");
+            showAlert(Alert.AlertType.ERROR, "Błąd walidacji", "Wszystkie pola muszą być wypełnione.");
             return;
         }
 
@@ -97,7 +97,7 @@ public class CarDetailsController {
         try {
             priceValue = new BigDecimal(price);
         } catch (NumberFormatException e) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "Price must be a number.");
+            showAlert(Alert.AlertType.ERROR, "Błąd walidacji", "Cena musi być liczbą.");
             return;
         }
 
@@ -106,7 +106,7 @@ public class CarDetailsController {
         String fueltype = getFuelType();
 
         if (name.isEmpty() || power.isEmpty() || fueltype.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "All fields must be filled.");
+            showAlert(Alert.AlertType.ERROR, "Błąd walidacji", "Wszystkie pola muszą być wypełnione.");
             return;
         }
 
@@ -114,7 +114,7 @@ public class CarDetailsController {
         try {
             powerNumber = Integer.parseInt(power);
         } catch (NumberFormatException e) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "Engine power must be a number.");
+            showAlert(Alert.AlertType.ERROR, "Błąd walidacji", "Moc silnika musi być liczbą.");
             return;
         }
 
@@ -135,7 +135,7 @@ public class CarDetailsController {
             AvailableCarsController.updateCar(car);
         }
 
-        showAlert(Alert.AlertType.INFORMATION, "Success", "Data successfully updated.");
+        showAlert(Alert.AlertType.INFORMATION, "Sukces", "Dane zostały pomyślnie zaktualizowane.");
 
         stage.close();
     }
@@ -153,7 +153,7 @@ public class CarDetailsController {
             AvailableCarsController.deleteCar(car.getId());
         }
 
-        showAlert(Alert.AlertType.INFORMATION, "Success", "Data successfully deleted.");
+        showAlert(Alert.AlertType.INFORMATION, "Sukces", "Dane zostały pomyślnie usunięte.");
 
         stage.close();
     }

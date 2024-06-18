@@ -47,7 +47,7 @@ public class ClientDetailsModalController {
 
         // Validate that all fields are filled.
         if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty()) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "All fields must be filled.");
+            showAlert(Alert.AlertType.ERROR, "Błąd walidacji", "Wszystkie pola muszą być wypełnione.");
             return;
         }
 
@@ -66,7 +66,13 @@ public class ClientDetailsModalController {
         }
 
         // Show success message and close the dialog.
-        showAlert(Alert.AlertType.INFORMATION, "Success", "Details have been successfully changed.");
+        showAlert(Alert.AlertType.INFORMATION, "Sukces", "Szczegóły zostały pomyślnie zmienione.");
+
+
+
+
+
+
 
         stage.close();
     }
@@ -109,7 +115,7 @@ public class ClientDetailsModalController {
             ClientsController.deleteClient(client.getId());
         }
 
-        showAlert(Alert.AlertType.INFORMATION, "Success", "Details have been successfully deleted.");
+        showAlert(Alert.AlertType.INFORMATION, "Sukces", "Szczegóły zostały pomyślnie usunięte.");
 
         stage.close();
     }

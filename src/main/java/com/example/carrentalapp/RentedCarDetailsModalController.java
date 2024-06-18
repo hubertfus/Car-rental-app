@@ -98,7 +98,7 @@ public class RentedCarDetailsModalController {
         String rentedUntilDate = getRentedUntil();
 
         if (rentedDate.isEmpty() || rentedFromDate.isEmpty() || rentedUntilDate.isEmpty() || clientChoiceBox.getValue() == null || carChoiceBox.getValue() == null) {
-            showAlert(Alert.AlertType.ERROR, "Validation Error", "All fields must be filled.");
+            showAlert(Alert.AlertType.ERROR, "Błąd walidacji", "Wszystkie pola muszą być wypełnione.");
             return;
         }
 
@@ -106,7 +106,7 @@ public class RentedCarDetailsModalController {
         String selectedClientId = clientChoiceBox.getValue().split(" ")[0]; // Assuming it's formatted as "id firstname lastname"
         Client client = ClientsController.getClientByClientID(Integer.parseInt(selectedClientId));
 
-        showAlert(Alert.AlertType.INFORMATION, "Success", "Car successfully rented.");
+        showAlert(Alert.AlertType.INFORMATION, "Sukces", "Samochód został pomyślnie wynajęty.");
         rentedCar.setRentedDate(rentedDate);
         rentedCar.setRentedFrom(rentedFromDate);
         rentedCar.setRentedUntil(rentedUntilDate);
@@ -139,7 +139,7 @@ public class RentedCarDetailsModalController {
             RentedCarsController.deleteRentedCar(rentedCar.getId());
         }
 
-        showAlert(Alert.AlertType.INFORMATION, "Success", "Details have been successfully deleted.");
+        showAlert(Alert.AlertType.INFORMATION, "Sukces", "Szczegóły zostały pomyślnie usunięte.");
 
         stage.close();
     }
