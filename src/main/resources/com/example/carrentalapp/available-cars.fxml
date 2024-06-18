@@ -8,7 +8,6 @@
 <VBox alignment="CENTER" prefHeight="600" prefWidth="800" style="-fx-alignment: center; -fx-spacing: 15px;" styleClass="main-container" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.carrentalapp.AvailableCarsController">
     <children>
         <Label style="-fx-font-size: 24px;" text="Dostępne samochody" />
-        <TextField fx:id="searchField" promptText="Search..." />
         <TableView fx:id="availableCarsTable" styleClass="rounded-table-view" VBox.vgrow="ALWAYS" >
             <columns>
                 <TableColumn fx:id="idCarColumn" prefWidth="50" text="IDCar" />

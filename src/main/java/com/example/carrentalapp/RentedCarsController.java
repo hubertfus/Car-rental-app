@@ -32,9 +32,6 @@ import java.util.List;
 public class RentedCarsController {
 
     @FXML
-    private TextField searchTextField;
-
-    @FXML
     private TableView<RentedCar> rentedCarsTable;
 
     @FXML
@@ -69,7 +66,6 @@ public class RentedCarsController {
         idClientColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getClient().getId()));
         idCarColumn.setCellValueFactory(cellData -> new SimpleObjectProperty<>(cellData.getValue().getCar().getId()));
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd").withZone(ZoneId.systemDefault());
         rentedDateColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getRentedDate()));
         rentedFromColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getRentedFrom()));
         rentedUntilColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getRentedUntil()));

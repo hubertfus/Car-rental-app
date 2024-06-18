@@ -22,8 +22,6 @@ import java.util.List;
  */
 public class ClientsController {
 
-    @FXML
-    private TextField searchField; // TextField for searching clients.
 
     @FXML
     private TableView<Client> tableView; // TableView to display clients.
