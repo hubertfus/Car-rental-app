@@ -11,6 +11,9 @@ import org.hibernate.Transaction;
 
 import java.math.BigDecimal;
 
+/**
+ * Controller class for managing car details editing functionality.
+ */
 public class CarDetailsController {
 
     @FXML
@@ -39,8 +42,14 @@ public class CarDetailsController {
 
     private Stage stage;
 
-    Car car;
-    Engine engine;
+    private Car car;
+    private Engine engine;
+
+    /**
+     * Sets the initial data for the form based on the provided car entity.
+     *
+     * @param car The car entity to populate the form with.
+     */
     public void setCar(Car car) {
         carIdLabel.setText(String.valueOf(car.getId()));
         brandTextField.setText(car.getBrand());
@@ -53,14 +62,27 @@ public class CarDetailsController {
         this.car = car;
         engine = car.getEngine();
     }
+
+    /**
+     * Sets the stage (window) for this controller.
+     *
+     * @param stage The stage to set.
+     */
     public void setStage(Stage stage) {
         this.stage = stage;
     }
 
+    /**
+     * Handles the cancel button action to close the window/stage.
+     */
     public void handleCancelButtonAction() {
         stage.close();
     }
 
+    /**
+     * Handles the save button action to validate and save changes to the car and its engine.
+     * Shows alerts for validation errors or successful save.
+     */
     public void handleSaveButtonAction() {
         String brand = getBrand();
         String model = getModel();
@@ -95,6 +117,7 @@ public class CarDetailsController {
             showAlert(Alert.AlertType.ERROR, "Błąd walidacji", "Moc silnika musi być liczbą.");
             return;
         }
+
         car.setBrand(brand);
         car.setModel(model);
         car.setPrice(priceValue);
@@ -112,18 +135,15 @@ public class CarDetailsController {
             AvailableCarsController.updateCar(car);
         }
 
-        showAlert(Alert.AlertType.INFORMATION, "Sukces", "Dane zostały pomyślnie zmienione.");
+        showAlert(Alert.AlertType.INFORMATION, "Sukces", "Dane zostały pomyślnie zaktualizowane.");
 
         stage.close();
     }
 
-    private void showAlert(Alert.AlertType alertType,String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
-    }
+    /**
+     * Handles the delete button action to delete the current car entity.
+     * Shows alert for successful deletion.
+     */
     public void handleDeleteButtonAction() {
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             Transaction transaction = session.beginTransaction();
@@ -133,33 +153,77 @@ public class CarDetailsController {
             AvailableCarsController.deleteCar(car.getId());
         }
 
-        AvailableCarsController.deleteCar(car.getId());
         showAlert(Alert.AlertType.INFORMATION, "Sukces", "Dane zostały pomyślnie usunięte.");
 
         stage.close();
     }
 
-    public String  getBrand() {
+    /**
+     * Retrieves the brand from the brand text field.
+     *
+     * @return The brand string.
+     */
+    public String getBrand() {
         return brandTextField.getText();
     }
 
+    /**
+     * Retrieves the model from the model text field.
+     *
+     * @return The model string.
+     */
     public String getModel() {
         return modelTextField.getText();
     }
 
+    /**
+     * Retrieves the engine name from the engine name text field.
+     *
+     * @return The engine name string.
+     */
     public String getEngineName() {
         return engineNameTextField.getText();
     }
 
+    /**
+     * Retrieves the engine power from the power text field.
+     *
+     * @return The engine power string.
+     */
     public String getPower() {
         return powerTextField.getText();
     }
 
+    /**
+     * Retrieves the fuel type from the fuel type text field.
+     *
+     * @return The fuel type string.
+     */
     public String getFuelType() {
         return fuelTypeTextField.getText();
     }
 
+    /**
+     * Retrieves the price from the price text field.
+     *
+     * @return The price string.
+     */
     public String getPrice() {
         return priceTextField.getText();
+    }
+
+    /**
+     * Displays an alert dialog with the specified type, title, and message.
+     *
+     * @param alertType The type of the alert (e.g., information, error).
+     * @param title     The title of the alert.
+     * @param message   The message content of the alert.
+     */
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
